@@ -10,6 +10,6 @@
       "version": "latest"
     }
   },
-  "postCreateCommand": "pipx install numpy && mkdir -p ~/.vnc && printf 'password\n' | vncpasswd -f > ~/.vnc/passwd && chmod 600 ~/.vnc/passwd && git clone https://github.com/novnc/noVNC.git",
-  "postStartCommand": "cp -n ~/noVNC/vnc.html ~/noVNC/index.html; vncserver -geometry 1440x900 -xstartup \"cinnamon-session\" -rfbport 5900 && ./noVNC/utils/novnc_proxy --vnc 127.0.0.1:5900 --listen localhost:6080"
+  "postCreateCommand": "pipx install numpy && mkdir -p ~/.vnc && printf 'password\n' | vncpasswd -f > ~/.vnc/passwd && chmod 600 ~/.vnc/passwd && git clone https://github.com/novnc/noVNC.git /workspaces/codespace-desktop/noVNC && cp /workspaces/codespace-desktop/noVNC/vnc.html /workspaces/codespace-desktop/noVNC/index.html",
+  "postStartCommand": "vncserver -geometry 1440x900 -depth 16 -xstartup \"cinnamon-session\" -rfbport 5900 && /workspaces/codespace-desktop/noVNC/utils/novnc_proxy --vnc 127.0.0.1:5900 --listen localhost:6080"
 }
